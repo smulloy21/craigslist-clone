@@ -1,0 +1,72 @@
+{{#if true}}
+  <form>
+    <div class="row">
+      <div class="col-xs-6">
+        <label for="category">choose a category:</label>
+      </div>
+      <div class="col-xs-6">
+        <select class="form-control" onchange={{action (mut selectedCategory) value="target.value"}}>
+          <option class="form-control" value="category" disabled>category options</option>
+          {{#each sortedCategories as |category|}}
+            <option class="form-control" value={{category.id}} selected={{eq selectedCategory category}}>{{category.name}}</option>
+
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  </form>
+{{/if}}
+
+{{#each model.categories as |category|}}
+  {{#if (eq category.id selectedCategory)}}
+  <form>
+    <div class="row">
+      <div class="col-xs-6">
+        <label for="subcategory">choose a subcategory:</label>
+      </div>
+      <div class="col-xs-6">
+        <select class="form-control" onchange={{action (mut selectedSubcategory) value="target.value"}}>
+          <option class="form-control" value="subcategory" disabled>subcategory options</option>
+
+          {{#each category.subcategories as |subcategory|}}
+            <option class="form-control" value={{subcategory.id}} selected={{eq selectedSubcategory subcategory}}>{{subcategory.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  </form>
+
+  {{/if}}
+{{/each}}
+
+<br><br>
+
+{{#each model.subcategories as |subcategory|}}
+  {{#if (eq subcategory.id selectedSubcategory)}}
+    <div class="container">
+      <div class="row">
+        <form>
+          <label for="title">title</label>
+          {{input class="form-control" value=title id='title'}}
+
+          <label for="name">your name</label>
+          {{input class="form-control" value=name id='name'}}
+
+          <label for="email">email</label>
+          {{input class="form-control" value=email id='email'}}
+
+          <label for="location">location</label>
+          {{input class="form-control" value=location id='location'}}
+
+          <label for="details">listing details</label>
+          {{textarea class="form-control" value=details id='details'}}
+
+          <label for="image">image url</label>
+          {{input class="form-control" value=image id='image'}}
+          <br>
+          <button class="btn btn-default" {{action 'saveListing' subcategory}} >submit</button>
+        </form>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}

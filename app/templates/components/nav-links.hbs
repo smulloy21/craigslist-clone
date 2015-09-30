@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <nav class="navbar">
+    <div class="container-fluid">
+      {{#link-to 'index'}}<div class="navbar-brand">
+        craigslist
+      </div>{{/link-to}}
+      <ul class="nav navbar-nav">
+        {{#if category}}
+        <li style="border-radius: 5px;">{{#link-to 'category' category.id}}{{category.name}}{{/link-to}}</li>
+        {{/if}}
+        {{#if subcategory}}
+        <li style="border-radius: 5px;">{{#link-to 'subcategory' subcategory.id}}{{subcategory.name}}{{/link-to}}</li>
+        {{/if}}
+      </ul>
+
+      <div class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
+          <li style="border-radius: 5px;">{{#link-to 'post'}}add listing{{/link-to}}</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
