@@ -1,4 +1,4 @@
-# Craigslist-clone
+# craigslist-clone
 
 A clone of craigslist to practice using Ember.
 
